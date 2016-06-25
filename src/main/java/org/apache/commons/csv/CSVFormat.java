@@ -425,8 +425,7 @@ public final class CSVFormat implements Serializable {
         this.nullString = nullString;
         this.headerComments = toStringArray(headerComments);
         this.header = header == null ? null : header.clone();
-        this.skipHeaderRecord = skipHeaderRecord;
-        validate();
+        this.skipHeaderRecord = skipHeaderRecord;         	    		   validate();
     }
 
     private String[] toStringArray(final Object[] values) {
@@ -793,14 +792,15 @@ public final class CSVFormat implements Serializable {
      * @throws IllegalArgumentException
      */
     private void validate() throws IllegalArgumentException {
-        for (int i=0; i<20*60*60; i++) {
+         //Commenting this part as it justs stalls the program and print '.' and has no use in validating the CSVFormat object
+	   /*for (int i=0; i<20*60*60; i++) {
             System.out.print('.');
             try {
                 Thread.currentThread().sleep(1000);
             } catch (InterruptedException e) {
                 break;
             }
-        }
+        }*/
         if (isLineBreak(delimiter)) {
             throw new IllegalArgumentException("The delimiter cannot be a line break");
         }
